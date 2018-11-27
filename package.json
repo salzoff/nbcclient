@@ -1,8 +1,11 @@
 {
   "name": "@salzoff/nbclient",
-  "version": "0.0.14",
+  "version": "0.0.1",
   "description": "NBClient",
   "main": "dist/index,js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:frontend": "webpack --config webpack.config.dev.js && webpack-dev-server --config webpack.config.dev.js",
