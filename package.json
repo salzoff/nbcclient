@@ -5,8 +5,8 @@
   "main": "dist/index,js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:frontend": "webpack --config webpack.config.dev.js && webpack-dev-server",
-    "dev:contentserver": "node ./scripts/initEnv.js & cd ./node_modules/@salzoff/contentexpress & node dist/index.js",
+    "dev:frontend": "webpack --config webpack.config.dev.js && webpack-dev-server --config webpack.config.dev.js",
+    "dev:contentserver": "node ./scripts/initEnv.js && node ./node_modules/@salzoff/contentexpress/dist/index.js",
     "dev": "concurrently \"npm run dev:contentserver\" \"npm run dev:frontend\"",
     "build": "webpack"
   },
@@ -24,7 +24,7 @@
     "axios": "^0.18.0"
   },
   "devDependencies": {
-    "@salzoff/contentexpress": "0.0.13",
+    "@salzoff/contentexpress": "0.0.14",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",

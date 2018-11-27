@@ -5,21 +5,25 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, 'src/example/js/example.js'),
+    entry: './src/example/js/example.js',
     module: {
         rules: [
             { test: /\.js$/, use: 'babel-loader', include: [path.resolve(__dirname, 'src')], exclude:[path.resolve(__dirname, 'node_modules')] }
         ]
     },
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.join (__dirname, 'build'),
         filename: 'bundle.js'
     },
     plugins: [
-        new HtmlWebpackPlugin({template: './src/example/index.html'})
+        new HtmlWebpackPlugin({
+            template: 'src/example/index.html',
+            filename: 'index.html',
+            inject: true
+        })
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'build'),
         compress: true,
         port: 9000
     }
