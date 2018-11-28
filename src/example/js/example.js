@@ -24,23 +24,23 @@ const parameterProType = {
             label: 'Language',
             type: 'select',
             options: [{
-                value: 'DE',
+                value: 'de',
                 label: 'German',
             },
                 {
-                    value: 'EN',
+                    value: 'en',
                     label: 'English'
                 },
                 {
-                    value: 'FR',
+                    value: 'fr',
                     label: 'French'
                 },
                 {
-                    value: 'ES',
+                    value: 'es',
                     label: 'Spanish'
                 },
                 {
-                    value: 'IT',
+                    value: 'it',
                     label: 'Italian'
                 }
             ],
@@ -67,23 +67,23 @@ const parameterProType = {
             label: 'Language',
             type: 'select',
             options: [{
-                    value: 'DE',
+                    value: 'de',
                     label: 'German',
                 },
                 {
-                    value: 'EN',
+                    value: 'en',
                     label: 'English'
                 },
                 {
-                    value: 'FR',
+                    value: 'fr',
                     label: 'French'
                 },
                 {
-                    value: 'ES',
+                    value: 'es',
                     label: 'Spanish'
                 },
                 {
-                    value: 'IT',
+                    value: 'it',
                     label: 'Italian'
                 }
             ],
@@ -122,7 +122,7 @@ class ExampleApp {
         this.requesttype.on('change', this.onRequesttypeChange.bind(this));
         this.values = {
             list: 'country',
-            lang: 'DE'
+            lang: 'de'
         };
         this.renderFields();
     }
@@ -164,8 +164,7 @@ class ExampleApp {
     }
 
     renderResponse(response) {
-        console.log(response);
-        const items = response.data instanceof Array ? response.data : response.data.items;
+        const items = response instanceof Array ? response : response.items;
         this.responseCt.empty();
         let table = $('<table />');
         items.forEach((element, index) => {
@@ -198,20 +197,22 @@ class ExampleApp {
     onSubmit(e) {
         e.preventDefault();
         let form = $(e.target);
-        Object.keys(this.values).forEach(key => {
-            if (this.values[key].length === 0 || this.values[key] === undefined) {
-                delete this.values[key];
+        let values = Object.assign({}, this.values);
+        delete values['requesttype'];
+        Object.keys(values).forEach(key => {
+            if (values[key].length === 0 || values[key] === undefined) {
+                delete values[key];
             }
         });
         switch (this.requesttype.val()) {
             case 'list':
-                this.client.requestList(this.values).then(this.renderResponse.bind(this));
+                this.client.requestList(values).then(this.renderResponse.bind(this));
                 break;
             case 'search':
-                this.client.requestSearch(this.values).then(this.renderResponse.bind(this));
+                this.client.requestSearch(values).then(this.renderResponse.bind(this));
                 break;
             case 'hotel':
-                this.client.requestHotel(this.values).then(this.renderResponse.bind(this));
+                this.client.requestHotel(values).then(this.renderResponse.bind(this));
                 break;
         }
 

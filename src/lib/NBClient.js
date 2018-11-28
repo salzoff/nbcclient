@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jsonata from "jsonata/jsonata";
 export default class NBCClient {
     constructor(url) {
         this.url = url;
@@ -7,15 +8,18 @@ export default class NBCClient {
         }) ;
     }
 
-    requestList(params) {
-        return this.$http.post('list', params);
+    requestList(params, orderBy) {
+        return this.$http.post('list', params)
+                .then(responseObj => responseObj.data);
     }
 
     requestSearch(params) {
-        return this.$http.post('search', params);
+        return this.$http.post('search', params)
+            .then(responseObj => responseObj.data);
     }
 
     requestHotel(params) {
-        return this.$http.post('hotel', params);
+        return this.$http.post('hotel', params)
+            .then(responseObj => responseObj.data);
     }
 };
