@@ -1,5 +1,4 @@
 import axios from 'axios';
-import jsonata from "jsonata/jsonata";
 export default class NBCClient {
     constructor(url) {
         this.url = url;
