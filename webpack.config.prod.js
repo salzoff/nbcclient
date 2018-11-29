@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: 'production',
-    entry: './src/lib/NBClient.js',
+    entry: './src/lib/NBCClient.js',
     module: {
         rules: [
             { test: /\.js$/, use: 'babel-loader'}

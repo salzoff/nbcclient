@@ -1,5 +1,5 @@
 import config from '../config';
-import NBClient from '../../lib/NBClient';
+import NBClient from '../../lib/NBCClient';
 
 const parameterProType = {
     list:{

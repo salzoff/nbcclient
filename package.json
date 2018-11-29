@@ -1,8 +1,8 @@
 {
-  "name": "@salzoff/nbclient",
-  "version": "0.0.3",
-  "description": "NBClient",
-  "main": "dist/index,js",
+  "name": "@salzoff/nbcclient",
+  "version": "0.0.1",
+  "description": "NBCClient",
+  "main": "./dist/index,js",
   "files": [
     "dist"
   ],
