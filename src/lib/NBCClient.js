@@ -30,7 +30,7 @@ export default class NBCClient {
                 }
                 let item = response.items.find(item => item.CatalogCode === params.katcode) || response.items[0];
                 let image = item.Images.Medium.find(image => image.type === 'A') || item.Images.Medium[0];
-                return image;
+                return image.url;
             });
     }
 }

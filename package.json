@@ -1,6 +1,6 @@
 {
   "name": "@salzoff/nbcclient",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "NBCClient",
   "main": "./dist/nbcclient.js",
   "module": "./src/lib/NBCClient.js",
