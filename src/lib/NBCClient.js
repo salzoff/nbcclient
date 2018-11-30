@@ -25,12 +25,14 @@ export default class NBCClient {
     requestTeaserImage(params) {
         params.show = 'pic,katcode';
         return this.requestSearch(params).then(response => {
+            return new Promise((resolve, reject) => {
                 if (!response.items || response.items.length === 0) {
-                    return false;
+                    reject();
                 }
-                let item = response.items.find(item => item.CatalogCode === params.katcode) || response.items[0];
+                let item = response.items[0];
                 let image = item.Images.Medium.find(image => image.type === 'A') || item.Images.Medium[0];
-                return image.url;
+                resolve(image.url);
             });
+        });
     }
 }
